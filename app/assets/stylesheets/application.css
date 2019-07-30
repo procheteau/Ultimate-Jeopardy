@@ -115,3 +115,58 @@ img {
   font-family: 'Saira Extra Condensed', sans-serif;
   font-size: 20px;
 }
+
+.game{
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  background: linear-gradient(white,#273469);
+  background: -webkit-linear-gradient(white,#273469);
+  background: -o-linear-gradient(white,#273469);
+  background: -moz-linear-gradient(white,#273469);
+}
+
+.jeopardy-table{
+  width: 100%;
+}
+
+.jeopardy-table table{
+  margin: 0 auto;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+}
+
+th {
+  height: 150px;
+  width: 150px;
+  background-color: #1E2749;
+}
+
+td {
+  height: 150px;
+  width: 150px;
+  background-color: #1E2749;
+}
+
+td:hover{
+  background-color: #273469;
+}
+td:hover p{
+  font-size: 43px;
+}
+
+th p{
+  text-align: center;
+  font-family: 'Bungee', cursive;
+  text-shadow: 5px 5px 5px black;
+  color: white;
+}
+
+td p{
+  text-align: center;
+  font-family: 'Bungee', cursive;
+  color: yellow;
+  text-shadow: 5px 5px 5px black;
+  font-size: 40px;
+}
