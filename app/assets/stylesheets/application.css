@@ -64,3 +64,32 @@ img {
   border-radius: 25px;
   box-shadow: 15px 15px 10px black;
 }
+
+.menu-row{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.menu-button{
+  background-color: #FAFAFF;
+  height: 100px;
+  width: 150px;
+  box-shadow: 5px 5px 10px black;
+  margin: 20px;
+}
+
+.menu-button:hover{
+  background-color: #E4D9FF;
+}
+
+.menu-block h4{
+  margin-left: 15px;
+  margin-bottom: 1px;
+  font-weight: bold;
+  color: #273469
+}
+
+.menu-block p{
+  margin-left: 15px
+}
