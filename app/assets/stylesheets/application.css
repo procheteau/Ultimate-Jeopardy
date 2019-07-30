@@ -16,9 +16,51 @@
 
  */
 
- .top-bar, .top-bar a {
-  background-color: #30343F;
+img {
+  float:left;
+  margin-left: 0;
+  height: 45px;
+}
+
+.top-bar, .top-bar a {
+  background-color: black;
   font-family: 'Bungee Outline', cursive;
   color: #FFFFFF;
   font-size: 25px;
+  white-space: nowrap;
+}
+
+@media only screen and (min-width: 40.0625em) {
+
+  .top-bar-section li:not(.has-form) a:not(.button) {
+    background: black;
+    font-family: 'Bungee Outline', cursive;
+    font-size: 16px;
+  }
+
+  .top-bar-section ul {
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+.main-menu{
+  height: 100%;
+  width: 100%;
+  background-image: url(/assets/jeopardy-white.jpg);
+  background-size: cover;
+}
+
+.menu-block{
+  height: 580px;
+  width: 380px;
+  background-color: #FAFAFF;
+  float: right;
+  margin-right: 60px;
+  margin-top: 20px;
+  opacity: .8;
+  position: relative;
+  border-radius: 25px;
+  box-shadow: 15px 15px 10px black;
 }
