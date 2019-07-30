@@ -143,16 +143,16 @@ th {
   background-color: #1E2749;
 }
 
-td {
+.value {
   height: 150px;
   width: 150px;
   background-color: #1E2749;
 }
 
-td:hover{
+.value:hover{
   background-color: #273469;
 }
-td:hover p{
+.value:hover p{
   font-size: 43px;
 }
 
@@ -169,4 +169,78 @@ td p{
   color: yellow;
   text-shadow: 5px 5px 5px black;
   font-size: 40px;
+}
+
+.score{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.score p{
+  font-family: 'Bungee', cursive;
+  font-size: 45px;
+  color: white;
+  margin-right: 15px;
+  text-shadow: 5px 5px 5px black;
+}
+
+.score-box{
+  border-color: white;
+  border-style: solid;
+  background-color: black;
+  border-width: thick;
+}
+
+.score-box p{
+  font-family: 'Bungee', cursive;
+  text-align: center;
+  color: white;
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	animation-duration:1s;
+}
+
+.fade-in.one{
+-webkit-animation-delay: 0.1s;
+-moz-animation-delay: 0.1s;
+animation-delay: 0.1s;
+}
+.fade-in.two{
+-webkit-animation-delay: 0.2s;
+-moz-animation-delay: 0.2s;
+animation-delay: 0.2s;
+}
+.fade-in.three{
+-webkit-animation-delay: 0.3s;
+-moz-animation-delay: 0.3s;
+animation-delay: 0.3s;
+}
+.fade-in.four{
+-webkit-animation-delay: 0.4s;
+-moz-animation-delay: 0.4s;
+animation-delay: 0.4s;
+}
+.fade-in.five{
+-webkit-animation-delay: 0.5s;
+-moz-animation-delay: 0.5s;
+animation-delay: 0.5s;
 }
