@@ -55,14 +55,13 @@ img {
 .menu-block{
   height: 580px;
   width: 380px;
-  background-color: #FAFAFF;
+  background: rgba(250, 250, 255,0.8);
   float: right;
   margin-right: 60px;
   margin-top: 20px;
-  opacity: .8;
   position: relative;
   border-radius: 25px;
-  box-shadow: 15px 15px 10px black;
+  box-shadow: 12px 12px 5px #273469;
 }
 
 .menu-row{
@@ -73,23 +72,46 @@ img {
 
 .menu-button{
   background-color: #FAFAFF;
-  height: 100px;
-  width: 150px;
-  box-shadow: 5px 5px 10px black;
-  margin: 20px;
+  height: 120px;
+  width: 200px;
+  box-shadow: 5px 5px 10px #273469;
+  margin: 18px;
+  border-radius: 20px;
+  opacity: 1.0;
+  text-align: center;
 }
 
 .menu-button:hover{
   background-color: #E4D9FF;
 }
 
-.menu-block h4{
+.menu-button i{
+ font-size: 42px;
+ color: #273469;
+ margin-top: 20px;
+ margin-bottom: 5px;
+}
+
+.menu-description{
+  background-color: #FAFAFF;
+  height: max-content;
+  width: 350px;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.menu-block h3{
+  margin-top: 10px;
   margin-left: 15px;
   margin-bottom: 1px;
   font-weight: bold;
-  color: #273469
+  color: #273469;
+  font-family: 'Saira Extra Condensed', sans-serif;
 }
 
 .menu-block p{
-  margin-left: 15px
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 20px;
 }
