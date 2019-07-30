@@ -15,3 +15,10 @@
  *= require foundation_and_overrides
 
  */
+
+ .top-bar, .top-bar a {
+  background-color: #30343F;
+  font-family: 'Bungee Outline', cursive;
+  color: #FFFFFF;
+  font-size: 25px;
+}
