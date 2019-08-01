@@ -3,18 +3,16 @@ require 'httparty'
 class ParseWiki
   include HTTParty
 
-  def intro(subject, state = false)
+  def intro(subject)
     self.class.base_uri "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles="
-    if state == true
-      subject = subject + " (U.S. state)"
-    end
+
     query_string = subject.gsub(' ','%20')
     wiki_object = self.class.get(query_string)
     page_key = wiki_object['query']['pages'].keys[0]
     wiki_intro = wiki_object['query']['pages'][page_key]["extract"]
-    #if wiki_intro is empty, then the wiki query failed. Returns the empty string
-    if wiki_intro == ""
-      return wiki_intro
+    #if wiki_intro is empty or too general, then the wiki query failed.
+    if wiki_intro == "" || wiki_intro.include?('may refer to') || wiki_intro.include?('most commonly refers to')
+      return "Sorry, No Additional Information Available"
     end
     clean_text(wiki_intro)
   end
