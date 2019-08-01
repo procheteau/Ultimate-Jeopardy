@@ -119,6 +119,7 @@ img {
 .game{
   height: 100%;
   width: 100%;
+
   padding-top: 30px;
   background: linear-gradient(white,#273469);
   background: -webkit-linear-gradient(white,#273469);

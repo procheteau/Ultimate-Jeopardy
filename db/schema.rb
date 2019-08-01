@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_004357) do
+ActiveRecord::Schema.define(version: 2019_08_01_035941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2019_07_30_004357) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "wiki_intro", default: "", null: false
+    t.string "wiki_image", default: "", null: false
     t.index ["category_id"], name: "index_questions_on_category_id"
   end
 

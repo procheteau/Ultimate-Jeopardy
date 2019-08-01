@@ -3,5 +3,5 @@ class Category < ApplicationRecord
   validates :clues_count, presence: true
 
   has_many :questions
-  belongs_to :user
+  # belongs_to :user
 end
