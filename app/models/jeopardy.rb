@@ -9,17 +9,15 @@ class Jeopardy
     self.class.base_uri "http://jservice.io/api/category?&id="
     response_object = self.class.get(category_num.to_s)
     clue_objects = response_object['clues']
-    binding.pry
 
     question_object_array = questions(clue_objects)
-    binding.pry
     #if there are not enough valid questions in this category, return nil
     if question_object_array == nil
       return nil
     end
 
     category_object = {
-      name: response_object['id'].upcase,
+      name: response_object['title'].upcase,
       clues_count: response_object['clues_count'],
       questions: question_object_array
     }
@@ -34,16 +32,17 @@ class Jeopardy
         answer: clean_answer(clue['answer']),
         value: clue['value']
       }
-      if question['question_text'] != nil && question['answer'] !=nil
+      #if question is complete (no bad questions, answers, or missing values) include in object array
+      if question[:question_text] != nil && question[:answer] != nil && question[:value] != nil
         question_object_array << question
-        if !value_check.include?(question['value'])
-          value_check << question['value']
+        if !value_check.include?(question[:value])
+          value_check << question[:value]
         end
       end
     end
 
-    #return nil if category does not have enough valid questions
-    if !([100,200,300,400,500]-value_check).empty?
+    #return nil if category does not have enough valid questions to fill a board category
+    if !([200,400,600,800,1000]-value_check).empty?
       return nil
     end
     return question_object_array
@@ -64,6 +63,7 @@ class Jeopardy
     if text.include?('GIVES US THE CLUE') || text.include?('I\'m')
       return nil
     end
+    return text
   end
 
   def clean_answer(text)
@@ -71,10 +71,11 @@ class Jeopardy
     if text.include?('/')
       return nil
     end
-    #remove any extra spaces,italics tags. Replace any instances of '&' with 'and' to improve wiki queries
+    #remove any extra spaces,italics tags, extra quotes. Replace any instances of '&' with 'and' to improve wiki queries
     text = text.gsub(/&/, "and")
     text = text.gsub(/<i>/, "")
     text = text.gsub(/ +/, " ")
+    text = text.gsub(/\"/, "")
 
     #Check for second answer in parentheses. If "or" is not included in phrase, then value in parentheses is actually
     #part of the first answer. Extract from parentheses to include with clean answer text
@@ -85,7 +86,6 @@ class Jeopardy
         text = text.gsub(/[()]/, "")
       end
     end
-    text = text.upcase
 
     #remove first 'a','an', 'it's' from phrases, such as "a pulley"
     array = text.split(' ')
@@ -93,10 +93,6 @@ class Jeopardy
       array.shift
     end
     text = array.join(' ')
+    text = text.upcase
   end
 end
-
-
-test = Jeopardy.new
-test_category = test.category(139)
-binding.pry
