@@ -7,7 +7,7 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/games" component={GameContainer} />
+        <Route exact path="/games/:id" component={GameContainer} />
         <Route exact path="/games/:id/gamequestions/:id" component={GameQuestionFormContainer} />
       </Switch>
     </BrowserRouter>
