@@ -79,6 +79,7 @@ class Jeopardy
 
     #Check for second answer in parentheses. If "or" is not included in phrase, then value in parentheses is actually
     #part of the first answer. Extract from parentheses to include with clean answer text
+    #For Example: (Ferdinand) Marcos
     if text[/\((.*?)\)/, 1]
       if text[/\((.*?)\)/, 1].include?('or ')
         text = text.gsub(/\(.*\)/, "")
