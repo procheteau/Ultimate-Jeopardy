@@ -1,0 +1,3 @@
+class GameCategoryController < ApplicationController
+
+end
