@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_08_02_192310) do
     t.bigint "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "game_categories_id"
-    t.index ["game_categories_id"], name: "index_game_questions_on_game_categories_id"
+    t.bigint "game_category_id"
+    t.index ["game_category_id"], name: "index_game_questions_on_game_category_id"
     t.index ["question_id"], name: "index_game_questions_on_question_id"
   end
 
