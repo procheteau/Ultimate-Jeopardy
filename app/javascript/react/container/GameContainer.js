@@ -10,9 +10,9 @@ class GameContainer extends Component {
     this.state = {
       gameCompleted: false,
       gameCategoryObjects: [],
-      gameQuestionObjects: []
+      gameQuestionObjects: [],
+      gameScore: 0
     }
-
   }
 
   componentDidMount(){
@@ -31,17 +31,65 @@ class GameContainer extends Component {
       .then(gameObject => {
         let categories = gameObject.game.categories
         let questions = gameObject.game.questions
-        this.setState({ gameCompleted: gameObject.game.completed, gameCategoryObjects: categories, gameQuestionObjects: questions })
+        this.setState({ gameCompleted: gameObject.game.completed, gameScore: gameObject.game.score,gameCategoryObjects: categories, gameQuestionObjects: questions })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
     let categories
+    let rowOne, rowTwo, rowThree, rowFour, rowFive
+    let gameId = this.props.match.params.id
+    let playerScore = "$"+this.state.gameScore
 
     if (this.state.gameCategoryObjects.length !== 0) {
       categories = this.state.gameCategoryObjects.map((category,index) => {
         return(<th key={index}><p>{category.name}</p></th>)
+      })
+    }
+
+    if (this.state.gameQuestionObjects.length !== 0) {
+      let values200 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 200)
+      rowOne = values200.map((question,index) => {
+        let dollarValue = "$"+question.value
+        let questionURL = `/games/${gameId}/questions/${question.id}`
+        return(<td className="value fade-in one" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
+      })
+    }
+
+    if (this.state.gameQuestionObjects.length !== 0) {
+      let values400 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 400)
+      rowTwo = values400.map((question,index) => {
+        let dollarValue = "$"+question.value
+        let questionURL = `/games/${gameId}/questions/${question.id}`
+        return(<td className="value fade-in two" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
+      })
+    }
+
+    if (this.state.gameQuestionObjects.length !== 0) {
+      let values600 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 600)
+      rowThree = values600.map((question,index) => {
+        let dollarValue = "$"+question.value
+        let questionURL = `/games/${gameId}/questions/${question.id}`
+        return(<td className="value fade-in three" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
+      })
+    }
+
+    if (this.state.gameQuestionObjects.length !== 0) {
+      let values800 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 800)
+      rowFour = values800.map((question,index) => {
+        let dollarValue = "$"+question.value
+        let questionURL = `/games/${gameId}/questions/${question.id}`
+        return(<td className="value fade-in four" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
+      })
+    }
+
+    if (this.state.gameQuestionObjects.length !== 0) {
+      let values1000 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 1000)
+      rowFive = values1000.map((question,index) => {
+        let dollarValue = "$"+question.value
+        let questionURL = `/games/${gameId}/questions/${question.id}`
+        return(<td className="value fade-in five" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
       })
     }
 
@@ -54,44 +102,19 @@ class GameContainer extends Component {
                   {categories}
                 </tr>
                 <tr>
-                  <td className="value fade-in one"><p>$200</p></td>
-                  <td className="value fade-in one"><p>$200</p></td>
-                  <td className="value fade-in one"><p>$200</p></td>
-                  <td className="value fade-in one"><p>$200</p></td>
-                  <td className="value fade-in one"><p>$200</p></td>
-                  <td className="value fade-in one"><p>$200</p></td>
+                  {rowOne}
                 </tr>
                 <tr>
-                  <td className="value fade-in two"><p>$400</p></td>
-                  <td className="value fade-in two"><p>$400</p></td>
-                  <td className="value fade-in two"><p>$400</p></td>
-                  <td className="value fade-in two"><p>$400</p></td>
-                  <td className="value fade-in two"><p>$400</p></td>
-                  <td className="value fade-in two"><p>$400</p></td>
+                  {rowTwo}
                 </tr>
                 <tr>
-                  <td className="value fade-in three"><p>$600</p></td>
-                  <td className="value fade-in three"><p>$600</p></td>
-                  <td className="value fade-in three"><p>$600</p></td>
-                  <td className="value fade-in three"><p>$600</p></td>
-                  <td className="value fade-in three"><p>$600</p></td>
-                  <td className="value fade-in three"><p>$600</p></td>
+                  {rowThree}
                 </tr>
                 <tr>
-                  <td className="value fade-in four"><p>$800</p></td>
-                  <td className="value fade-in four"><p>$800</p></td>
-                  <td className="value fade-in four"><p>$800</p></td>
-                  <td className="value fade-in four"><p>$800</p></td>
-                  <td className="value fade-in four"><p>$800</p></td>
-                  <td className="value fade-in four"><p>$800</p></td>
+                  {rowFour}
                 </tr>
                 <tr>
-                  <td className="value fade-in five"><p>$1000</p></td>
-                  <td className="value fade-in five"><p>$1000</p></td>
-                  <td className="value fade-in five"><p>$1000</p></td>
-                  <td className="value fade-in five"><p>$1000</p></td>
-                  <td className="value fade-in five"><p>$1000</p></td>
-                  <td className="value fade-in five"><p>$1000</p></td>
+                  {rowFive}
                 </tr>
               </tbody>
           </table>
@@ -99,12 +122,11 @@ class GameContainer extends Component {
         <div className="score">
           <p>Score</p>
           <div className="score-box">
-            <p>$10,000</p>
+            <p>{playerScore}</p>
           </div>
         </div>
       </div>
     )
   }
-
 }
 export default GameContainer

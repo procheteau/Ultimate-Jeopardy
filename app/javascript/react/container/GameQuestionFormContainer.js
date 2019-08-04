@@ -20,6 +20,7 @@ class GameQuestionFormContainer extends Component {
 
     return(
       <div>
+        <h1>Test!!</h1>
         <FormTextField />
         <WikiTile />
       </div>

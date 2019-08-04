@@ -1,3 +1,4 @@
-class QuestionController < ApplicationController
-
+class QuestionsController < ApplicationController
+  def show
+  end
 end
