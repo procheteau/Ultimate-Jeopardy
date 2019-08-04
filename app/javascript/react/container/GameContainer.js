@@ -29,10 +29,9 @@ class GameContainer extends Component {
       })
       .then(response => response.json())
       .then(gameObject => {
-        debugger
-        let categories = gameObject.GameCategories.categories
-        let questions = gameObject.GameQuestions.questions
-        this.setState({ gameCompleted: gameObject.completed, gameCategoryObjects: categories, gameQuestionObjects: questions })
+        let categories = gameObject.game.categories
+        let questions = gameObject.game.questions
+        this.setState({ gameCompleted: gameObject.game.completed, gameCategoryObjects: categories, gameQuestionObjects: questions })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -40,9 +39,9 @@ class GameContainer extends Component {
   render(){
     let categories
 
-    if (this.state.CategoryObjects) {
-      categories = this.state.CategoryObjects.map(category => {
-        return(<th><p>category.name</p></th>)
+    if (this.state.gameCategoryObjects.length !== 0) {
+      categories = this.state.gameCategoryObjects.map((category,index) => {
+        return(<th key={index}><p>{category.name}</p></th>)
       })
     }
 
@@ -50,49 +49,51 @@ class GameContainer extends Component {
       <div className="game">
         <div className="jeopardy-table">
           <table>
-              <tr>
-                {categories}
-              </tr>
-              <tr>
-                <td className="value fade-in one"><p>$200</p></td>
-                <td className="value fade-in one"><p>$200</p></td>
-                <td className="value fade-in one"><p>$200</p></td>
-                <td className="value fade-in one"><p>$200</p></td>
-                <td className="value fade-in one"><p>$200</p></td>
-                <td className="value fade-in one"><p>$200</p></td>
-              </tr>
-              <tr>
-                <td className="value fade-in two"><p>$400</p></td>
-                <td className="value fade-in two"><p>$400</p></td>
-                <td className="value fade-in two"><p>$400</p></td>
-                <td className="value fade-in two"><p>$400</p></td>
-                <td className="value fade-in two"><p>$400</p></td>
-                <td className="value fade-in two"><p>$400</p></td>
-              </tr>
-              <tr>
-                <td className="value fade-in three"><p>$600</p></td>
-                <td className="value fade-in three"><p>$600</p></td>
-                <td className="value fade-in three"><p>$600</p></td>
-                <td className="value fade-in three"><p>$600</p></td>
-                <td className="value fade-in three"><p>$600</p></td>
-                <td className="value fade-in three"><p>$600</p></td>
-              </tr>
-              <tr>
-                <td className="value fade-in four"><p>$800</p></td>
-                <td className="value fade-in four"><p>$800</p></td>
-                <td className="value fade-in four"><p>$800</p></td>
-                <td className="value fade-in four"><p>$800</p></td>
-                <td className="value fade-in four"><p>$800</p></td>
-                <td className="value fade-in four"><p>$800</p></td>
-              </tr>
-              <tr>
-                <td className="value fade-in five"><p>$1000</p></td>
-                <td className="value fade-in five"><p>$1000</p></td>
-                <td className="value fade-in five"><p>$1000</p></td>
-                <td className="value fade-in five"><p>$1000</p></td>
-                <td className="value fade-in five"><p>$1000</p></td>
-                <td className="value fade-in five"><p>$1000</p></td>
-              </tr>
+            <tbody>
+                <tr>
+                  {categories}
+                </tr>
+                <tr>
+                  <td className="value fade-in one"><p>$200</p></td>
+                  <td className="value fade-in one"><p>$200</p></td>
+                  <td className="value fade-in one"><p>$200</p></td>
+                  <td className="value fade-in one"><p>$200</p></td>
+                  <td className="value fade-in one"><p>$200</p></td>
+                  <td className="value fade-in one"><p>$200</p></td>
+                </tr>
+                <tr>
+                  <td className="value fade-in two"><p>$400</p></td>
+                  <td className="value fade-in two"><p>$400</p></td>
+                  <td className="value fade-in two"><p>$400</p></td>
+                  <td className="value fade-in two"><p>$400</p></td>
+                  <td className="value fade-in two"><p>$400</p></td>
+                  <td className="value fade-in two"><p>$400</p></td>
+                </tr>
+                <tr>
+                  <td className="value fade-in three"><p>$600</p></td>
+                  <td className="value fade-in three"><p>$600</p></td>
+                  <td className="value fade-in three"><p>$600</p></td>
+                  <td className="value fade-in three"><p>$600</p></td>
+                  <td className="value fade-in three"><p>$600</p></td>
+                  <td className="value fade-in three"><p>$600</p></td>
+                </tr>
+                <tr>
+                  <td className="value fade-in four"><p>$800</p></td>
+                  <td className="value fade-in four"><p>$800</p></td>
+                  <td className="value fade-in four"><p>$800</p></td>
+                  <td className="value fade-in four"><p>$800</p></td>
+                  <td className="value fade-in four"><p>$800</p></td>
+                  <td className="value fade-in four"><p>$800</p></td>
+                </tr>
+                <tr>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                  <td className="value fade-in five"><p>$1000</p></td>
+                </tr>
+              </tbody>
           </table>
         </div>
         <div className="score">

@@ -3,9 +3,9 @@ class Game < ApplicationRecord
   validates :completed, null: false
 
   # belongs_to :user
-  has_many :gamecategories
-  has_many :categories, through: :gamecategories
+  has_many :game_categories
+  has_many :categories, through: :game_categories
 
-  has_many :gamequestions, through: :game_categories
-  has_many :questions, through: :gamequestions
+  has_many :game_questions, through: :game_categories
+  has_many :questions, through: :game_questions
 end
