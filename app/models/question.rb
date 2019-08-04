@@ -6,4 +6,6 @@ class Question < ApplicationRecord
   validates :wiki_image, presence: true
 
   belongs_to :category
+  has_many :game_questions
+  has_many :game_categories, through: :game_questions
 end

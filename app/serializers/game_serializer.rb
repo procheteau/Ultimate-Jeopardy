@@ -1,8 +1,6 @@
-class Game < ApplicationRecord
-  validates :score, null: false
-  validates :completed, null: false
+class GameSerializer < ActiveModel::Serializer
+  attributes :id, :score, :completed, :user_id
 
-  # belongs_to :user
   has_many :game_categories
   has_many :categories, through: :game_categories
 

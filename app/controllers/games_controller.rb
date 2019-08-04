@@ -3,7 +3,6 @@ require_relative "../models/game_question.rb"
 
 class GamesController < ApplicationController
   def index
-    binding.pry
   end
 
   def show
