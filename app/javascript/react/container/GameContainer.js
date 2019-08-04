@@ -8,29 +8,50 @@ class GameContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      gameCompleted: false,
+      gameCategoryObjects: [],
+      gameQuestionObjects: []
     }
 
   }
 
   componentDidMount(){
-
+    let gameId = this.props.match.params.id
+    fetch(`/api/v1/games/${gameId}`)
+      .then(response => {
+        if(response.ok){
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(gameObject => {
+        debugger
+        let categories = gameObject.GameCategories.categories
+        let questions = gameObject.GameQuestions.questions
+        this.setState({ gameCompleted: gameObject.completed, gameCategoryObjects: categories, gameQuestionObjects: questions })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-
   render(){
+    let categories
 
+    if (this.state.CategoryObjects) {
+      categories = this.state.CategoryObjects.map(category => {
+        return(<th><p>category.name</p></th>)
+      })
+    }
 
     return(
       <div className="game">
         <div className="jeopardy-table">
           <table>
               <tr>
-                <th><p>Category 1</p></th>
-                <th><p>Category 2</p></th>
-                <th><p>Category 3</p></th>
-                <th><p>Category 4</p></th>
-                <th><p>Category 5</p></th>
-                <th><p>Category 6</p></th>
+                {categories}
               </tr>
               <tr>
                 <td className="value fade-in one"><p>$200</p></td>

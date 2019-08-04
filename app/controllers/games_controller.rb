@@ -3,7 +3,6 @@ require_relative "../models/game_question.rb"
 
 class GamesController < ApplicationController
   def index
-    binding.pry
   end
 
   def show
@@ -19,7 +18,6 @@ class GamesController < ApplicationController
         GameQuestion.create!(game_category: @new_game_category, question: @new_game_category.category.questions.where(value: value).sample)
       end
     end
-    binding.pry
     redirect_to @new_game
   end
 
