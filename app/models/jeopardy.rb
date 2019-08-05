@@ -59,7 +59,7 @@ class Jeopardy
     if text.include?('CLUE CREW')
       return nil
     end
-    if text.include?('CLUE') || text.include?('I\'m') || text.include?('I\'ve')
+    if text.include?('CLUE') || text.include?('I\'M') || text.include?('I\'VE') || text.include?('ALEX')
       return nil
     end
     return text

@@ -34,7 +34,7 @@ img {
 
   .top-bar-section li:not(.has-form) a:not(.button) {
     background: black;
-    font-family: 'Bungee Outline', cursive;
+    font-family: 'Bungee', cursive;
     font-size: 16px;
   }
 
@@ -53,8 +53,8 @@ img {
 }
 
 .menu-block{
-  height: 580px;
-  width: 380px;
+  height: 800px;
+  width: 500px;
   background: rgba(250, 250, 255,0.8);
   float: right;
   margin-right: 60px;
@@ -92,10 +92,16 @@ img {
  margin-bottom: 5px;
 }
 
+.menu-button a{
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 30px;
+  color: #273469;
+}
+
 .menu-description{
   background-color: #FAFAFF;
   height: max-content;
-  width: 350px;
+  width: 450px;
   border-radius: 20px;
   margin: auto;
 }
@@ -109,22 +115,24 @@ img {
   font-family: 'Saira Extra Condensed', sans-serif;
 }
 
+
 .menu-block p{
   margin-left: 15px;
   margin-right: 15px;
   font-family: 'Saira Extra Condensed', sans-serif;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .game{
   height: 100%;
   width: 100%;
-
+  margin: 0 auto;
   padding-top: 30px;
   background: linear-gradient(white,#273469);
   background: -webkit-linear-gradient(white,#273469);
   background: -o-linear-gradient(white,#273469);
   background: -moz-linear-gradient(white,#273469);
+  position: absolute;
 }
 
 .jeopardy-table{
@@ -154,7 +162,7 @@ th {
   background-color: #273469;
 }
 .value:hover p{
-  font-size: 43px;
+  font-size: 35px;
 }
 
 th p{
@@ -169,7 +177,7 @@ td p{
   font-family: 'Bungee', cursive;
   color: yellow;
   text-shadow: 5px 5px 5px black;
-  font-size: 40px;
+  font-size: 34px;
 }
 
 .score{
@@ -247,21 +255,27 @@ animation-delay: 0.5s;
 }
 
 .wiki-box{
-  border-style: solid;
-  border-width: medium;
-  border-color: black;
+  border-radius: 10px;
   display: flex;
   margin-left: 150px;
   margin-right: 150px;
-  background-color: #E4D9FF;
+  background-color: #FAFAFF;
+  box-shadow: 5px 5px 10px #273469;
 }
 
 .wiki-box p{
   margin:30px;
+  font-family: 'Volkhov', serif;
+  clear: right;
 }
 
 .wiki-box img{
   height: 300px;
+  float: right;
+  margin-top:30px;
+  margin-bottom: 30px;
+  margin-right: 5%;
+  margin-left: auto;
 }
 
 .question-show{
@@ -276,7 +290,54 @@ animation-delay: 0.5s;
   position: absolute;
 }
 
+.question-show h3{
+  background-color: #273469;
+  box-shadow: 5px 5px 10px #30343F;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 15px;
+  margin-top: 20px;
+  font-family: 'Bungee';
+  text-shadow: 5px 5px 5px black;
+  color: white;
+}
+
 .question-show form{
   width: 500px;
   display: inline-block;
+}
+
+p, .form-button, .form-button .submit {
+  font-size: 20px;
+}
+
+.form-button, .form-button .submit {
+  padding: 1em;
+  background-color: #30343F;
+  color: #FAFAFF;
+  margin: .25em;
+  border: 0;
+  font-size: 15px;
+}
+
+.form-button:hover, .form-button .submit:hover {
+  background-color: #273469;
+  color: #FAFAFF;
+  cursor: pointer;
+  transition: background-color 300ms ease-out;
+}
+
+.answer{
+  color: red;
+  font-family: 'Volkhov', serif;
+}
+
+.answer-hide{
+  display: none;
+}
+
+.wiki-hide{
+  display: none;
 }

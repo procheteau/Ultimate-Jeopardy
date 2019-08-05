@@ -7,11 +7,19 @@ class GameQuestionFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      wikiClicked: false,
+      answerSubmitted: false,
       wikiObject: {},
       questionObject: {}
     }
 
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+  }
+
+  handleFormSubmit(event){
+    event.preventDefault();
+    if(this.state.answerSubmitted === false){
+      this.setState({answerSubmitted: true})
+    }
   }
 
   componentDidMount(){
@@ -38,13 +46,18 @@ class GameQuestionFormContainer extends Component {
   }
 
   render(){
+    let answerClass = "answer-hide"
+    let wikiClass = "wiki-hide"
+    if(this.state.answerSubmitted == true){
+      answerClass = "answer fade-in one"
+      wikiClass = "wiki-box fade-in one"
+    }
 
     return(
       <div className="question-show">
-        <h1>{this.state.questionObject.question}</h1>
-        <form>
+        <h3>{this.state.questionObject.question}</h3>
+        <form onSubmit={this.handleFormSubmit}>
           <FormTextField
-            label="Answer"
             name="Answer"
           />
           <div className="button-group">
@@ -52,12 +65,12 @@ class GameQuestionFormContainer extends Component {
           </div>
         </form>
 
-        <h4>ANSWER: {this.state.questionObject.answer}</h4>
-
+        <h4 className={answerClass}>ANSWER: {this.state.questionObject.answer}</h4>
 
         <WikiTile
           wikiIntro = {this.state.wikiObject.intro}
           wikiImage = {this.state.wikiObject.image}
+          wikiClass = {wikiClass}
         />
       </div>
     )
