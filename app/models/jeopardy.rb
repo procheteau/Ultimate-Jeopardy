@@ -1,6 +1,5 @@
 require 'httparty'
 require 'rubygems'
-require 'pry'
 
 class Jeopardy
   include HTTParty
@@ -57,10 +56,10 @@ class Jeopardy
     if text.include?('SEEN HERE') || text.include?('HEARD HERE')
       return nil
     end
-    if text.include?('CLUE CREW') 
+    if text.include?('CLUE CREW')
       return nil
     end
-    if text.include?('CLUE') || text.include?('I\'m') || text.include?('I\'ve')
+    if text.include?('CLUE') || text.include?('I\'M') || text.include?('I\'VE') || text.include?('ALEX')
       return nil
     end
     return text

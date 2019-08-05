@@ -12,6 +12,20 @@ class ParseWiki
     rescue
       return "Sorry, No Additional Information Available"
     end
+
+    #if query failed and included "the" in answer, remove the to see if it improves query
+    if wiki_object == "" || wiki_object == nil
+      array = subject.split(' ')
+      if array[0]=='the'
+        array.shift
+      end
+        text = array.join(' ')
+      end
+      query_string = text.gsub(' ','%20')
+      wiki_object = self.class.get(query_string)
+    end
+
+
     if wiki_object['query']['pages'].keys == [] || wiki_object['query']['pages'].keys == nil
       return "Sorry, No Additional Information Available"
     end
@@ -21,7 +35,7 @@ class ParseWiki
     if wiki_intro == "" || wiki_intro == nil
       return "Sorry, No Additional Information Available"
     end
-    if wiki_intro.include?('may refer to') || wiki_intro.include?('most commonly refers to')
+    if wiki_intro.include?('may refer to') || wiki_intro.include?('most commonly refers to') || wiki_intro.include?('usually refers to') || wiki_intro.include?('refer to')
       return "Sorry, No Additional Information Available"
     end
     clean_text(wiki_intro)
