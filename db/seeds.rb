@@ -3,7 +3,6 @@ require_relative '../app/models/parsewiki.rb'
 require_relative '../app/models/category.rb'
 require_relative '../app/models/question.rb'
 require 'rubygems'
-require 'pry'
 
 #create categories & questions starting at category#6000 via jservice
 jeopardy = Jeopardy.new
@@ -17,7 +16,6 @@ wiki = ParseWiki.new
   #   answer_formatted = question_object[:answer].downcase.titleize
   #   intro = wiki.intro(answer_formatted)
   #   image_url = wiki.image(answer_formatted)
-  #   binding.pry
   #   Question.create!(category: category, question_text: question_object[:question_text], answer: question_object[:answer], value: question_object[:value], wiki_intro: intro, wiki_image: image_url)
 
 
