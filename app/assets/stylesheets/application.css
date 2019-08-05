@@ -245,3 +245,38 @@ animation-delay: 0.4s;
 -moz-animation-delay: 0.5s;
 animation-delay: 0.5s;
 }
+
+.wiki-box{
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+  display: flex;
+  margin-left: 150px;
+  margin-right: 150px;
+  background-color: #E4D9FF;
+}
+
+.wiki-box p{
+  margin:30px;
+}
+
+.wiki-box img{
+  height: 300px;
+}
+
+.question-show{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(white,#273469);
+  background: -webkit-linear-gradient(white,#273469);
+  background: -o-linear-gradient(white,#273469);
+  background: -moz-linear-gradient(white,#273469);
+  position: absolute;
+}
+
+.question-show form{
+  width: 500px;
+  display: inline-block;
+}

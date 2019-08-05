@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 
 const FormTextField = props => {
   return(
-    <div>
-      FormTextField Test
-    </div>
+    <label>{props.label}
+      <input
+        type = "text"
+        name={props.name}
+        size = "10"
+      />
+    </label>
   )
 }
 
