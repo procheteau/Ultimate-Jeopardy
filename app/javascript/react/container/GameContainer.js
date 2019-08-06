@@ -10,7 +10,6 @@ class GameContainer extends Component {
     this.state = {
       gameCompleted: false,
       gameCategoryObjects: [],
-      gameQuestionObjects: [],
       gameScore: 0
     }
   }
@@ -30,66 +29,62 @@ class GameContainer extends Component {
       .then(response => response.json())
       .then(gameObject => {
         let categories = gameObject.game.categories
-        let questions = gameObject.game.questions
-        this.setState({ gameCompleted: gameObject.game.completed, gameScore: gameObject.game.score,gameCategoryObjects: categories, gameQuestionObjects: questions })
+        let questionObjects = gameObject.game.questions
+        categories.forEach((category)=>{
+          let categoryQuestions = questionObjects.filter(questionObject => questionObject.category_id === category.id)
+          category.questions = categoryQuestions
+        })
+        this.setState({ gameCompleted: gameObject.game.completed, gameScore: gameObject.game.score, gameCategoryObjects: categories})
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
-    let categories
-    let rowOne, rowTwo, rowThree, rowFour, rowFive
+    let categories = []
+    let rowOne = []
+    let rowTwo = []
+    let rowThree = []
+    let rowFour = []
+    let rowFive = []
+
     let gameId = this.props.match.params.id
     let playerScore = "$"+this.state.gameScore
 
     if (this.state.gameCategoryObjects.length !== 0) {
-      categories = this.state.gameCategoryObjects.map((category,index) => {
-        return(<th key={index}><p>{category.name}</p></th>)
-      })
-    }
+      this.state.gameCategoryObjects.forEach((category,index) => {
+        let question200 = category.questions.filter(questionObject => questionObject.value === 200)[0];
+        let question400 = category.questions.filter(questionObject => questionObject.value === 400)[0];
+        let question600 = category.questions.filter(questionObject => questionObject.value === 600)[0];
+        let question800 = category.questions.filter(questionObject => questionObject.value === 800)[0];
+        let question1000 = category.questions.filter(questionObject => questionObject.value === 1000)[0];
 
-    if (this.state.gameQuestionObjects.length !== 0) {
-      let values200 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 200)
-      rowOne = values200.map((question,index) => {
-        let dollarValue = "$"+question.value
-        let questionURL = `/games/${gameId}/questions/${question.id}`
-        return(<td className="value fade-in one" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
-      })
-    }
+        let value200 = question200.value;
+        let value400 = question400.value;
+        let value600 = question600.value;
+        let value800 = question800.value;
+        let value1000 = question1000.value;
 
-    if (this.state.gameQuestionObjects.length !== 0) {
-      let values400 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 400)
-      rowTwo = values400.map((question,index) => {
-        let dollarValue = "$"+question.value
-        let questionURL = `/games/${gameId}/questions/${question.id}`
-        return(<td className="value fade-in two" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
-      })
-    }
+        categories.push(<th key={index}><p>{category.name}</p></th>);
 
-    if (this.state.gameQuestionObjects.length !== 0) {
-      let values600 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 600)
-      rowThree = values600.map((question,index) => {
-        let dollarValue = "$"+question.value
-        let questionURL = `/games/${gameId}/questions/${question.id}`
-        return(<td className="value fade-in three" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
-      })
-    }
+        let dollarValue200 = "$"+value200
+        let questionURL200 = `/games/${gameId}/questions/${question200.id}`
+        rowOne.push(<td className="value fade-in one" key={index}><a href={questionURL200}><p>{dollarValue200}</p></a></td>)
 
-    if (this.state.gameQuestionObjects.length !== 0) {
-      let values800 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 800)
-      rowFour = values800.map((question,index) => {
-        let dollarValue = "$"+question.value
-        let questionURL = `/games/${gameId}/questions/${question.id}`
-        return(<td className="value fade-in four" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
-      })
-    }
+        let dollarValue400 = "$"+value400
+        let questionURL400 = `/games/${gameId}/questions/${question400.id}`
+        rowTwo.push(<td className="value fade-in two" key={index}><a href={questionURL400}><p>{dollarValue400}</p></a></td>)
 
-    if (this.state.gameQuestionObjects.length !== 0) {
-      let values1000 = this.state.gameQuestionObjects.filter(questionObject => questionObject.value === 1000)
-      rowFive = values1000.map((question,index) => {
-        let dollarValue = "$"+question.value
-        let questionURL = `/games/${gameId}/questions/${question.id}`
-        return(<td className="value fade-in five" key={index}><a href={questionURL}><p>{dollarValue}</p></a></td>)
+        let dollarValue600 = "$"+value600
+        let questionURL600 = `/games/${gameId}/questions/${question600.id}`
+        rowThree.push(<td className="value fade-in three" key={index}><a href={questionURL600}><p>{dollarValue600}</p></a></td>)
+
+        let dollarValue800 = "$"+value800
+        let questionURL800 = `/games/${gameId}/questions/${question800.id}`
+        rowFour.push(<td className="value fade-in four" key={index}><a href={questionURL800}><p>{dollarValue800}</p></a></td>)
+
+        let dollarValue1000 = "$"+value1000
+        let questionURL1000 = `/games/${gameId}/questions/${question1000.id}`
+        rowFive.push(<td className="value fade-in five" key={index}><a href={questionURL1000}><p>{dollarValue1000}</p></a></td>)
       })
     }
 

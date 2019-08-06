@@ -14,17 +14,15 @@ class ParseWiki
     end
 
     #if query failed and included "the" in answer, remove the to see if it improves query
-    if wiki_object == "" || wiki_object == nil
-      array = subject.split(' ')
-      if array[0]=='the'
-        array.shift
-      end
-        text = array.join(' ')
-      end
-      query_string = text.gsub(' ','%20')
-      wiki_object = self.class.get(query_string)
-    end
-
+    # if wiki_object == "" || wiki_object == nil
+    #   array = subject.split(' ')
+    #   if array[0]=='The'
+    #     array.shift
+    #   end
+    #   text = array.join(' ')
+    #   query_string = text.gsub(' ','%20')
+    #   wiki_object = self.class.get(query_string)
+    # end
 
     if wiki_object['query']['pages'].keys == [] || wiki_object['query']['pages'].keys == nil
       return "Sorry, No Additional Information Available"
