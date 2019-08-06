@@ -48,7 +48,7 @@ img {
 .main-menu{
   height: 100%;
   width: 100%;
-  background-image: url(/assets/jeopardywhite.jpg);
+  background-image: url(/assets/jeopardylowsat.jpg);
   background-size: cover;
 }
 
@@ -299,8 +299,8 @@ animation-delay: 0.5s;
   margin-right: 150px;
   padding: 15px;
   margin-top: 20px;
-  font-family: 'Bungee';
-  text-shadow: 5px 5px 5px black;
+  font-family: 'Volkhov', serif;
+  text-shadow: 2px 2px 1px black;
   color: white;
 }
 
@@ -320,6 +320,7 @@ p, .form-button, .form-button .submit {
   margin: .25em;
   border: 0;
   font-size: 15px;
+  border-radius: 5px;
 }
 
 .form-button:hover, .form-button .submit:hover {
@@ -329,8 +330,13 @@ p, .form-button, .form-button .submit {
   transition: background-color 300ms ease-out;
 }
 
-.answer{
+.answer-wrong{
   color: red;
+  font-family: 'Volkhov', serif;
+}
+
+.answer-correct{
+  color: green;
   font-family: 'Volkhov', serif;
 }
 
@@ -340,4 +346,22 @@ p, .form-button, .form-button .submit {
 
 .wiki-hide{
   display: none;
+}
+
+.button {
+  float:left;
+  background: #30343F;
+  color: #FAFAFF;
+  border-radius: 5px;
+  margin: 10px;
+  margin-top: 22px;
+  font-family: 'Volkhov', serif;
+}
+
+.button:hover {
+  background: #273469;
+}
+
+.button a {
+  color: #000000;
 }

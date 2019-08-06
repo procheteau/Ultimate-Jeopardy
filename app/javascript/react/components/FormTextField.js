@@ -6,6 +6,8 @@ const FormTextField = props => {
         type = "text"
         name={props.name}
         size = "10"
+        onChange = {props.handlerFunction}
+        value={props.content}
       />
   )
 }
