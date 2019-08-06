@@ -7,19 +7,37 @@ class GameQuestionFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      userAnswer: '',
       answerSubmitted: false,
+      answerCheck: null,
       wikiObject: {},
       questionObject: {}
     }
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleAnswerChange = this.handleAnswerChange.bind(this)
+    this.addScore = this.addScore.bind(this)
   }
 
   handleFormSubmit(event){
     event.preventDefault();
     if(this.state.answerSubmitted === false){
-      this.setState({answerSubmitted: true})
+      if(this.state.userAnswer.toUpperCase() === this.state.questionObject.answer ){
+        let scorePayload = {value: this.state.questionObject.value}
+        this.setState({answerSubmitted: true, answerCheck: "Correct"})
+        this.addScore(scorePayload)
+      } else {
+          this.setState({answerSubmitted: true, answerCheck: "Wrong"})}
     }
+  }
+
+
+  addScore(scorePayload){
+    console.log(`${scorePayload.value} points added!`)
+  }
+
+  handleAnswerChange(event){
+    this.setState({userAnswer: event.target.value})
   }
 
   componentDidMount(){
@@ -38,7 +56,7 @@ class GameQuestionFormContainer extends Component {
       })
       .then(response => response.json())
       .then(questionHash => {
-        let question = {question: questionHash.question_text, answer: questionHash.answer}
+        let question = {question: questionHash.question_text, answer: questionHash.answer, value: questionHash.value}
         let wiki = {image: questionHash.wiki_image, intro: questionHash.wiki_intro}
         this.setState({ questionObject: question, wikiObject: wiki })
       })
@@ -46,19 +64,32 @@ class GameQuestionFormContainer extends Component {
   }
 
   render(){
+    let questionUrl = this.props.match.url
+    let gameUrl = questionUrl.split("/").splice(0,3).join("/")
     let answerClass = "answer-hide"
     let wikiClass = "wiki-hide"
-    if(this.state.answerSubmitted == true){
-      answerClass = "answer fade-in one"
-      wikiClass = "wiki-box fade-in one"
+
+    if(this.state.answerSubmitted === true){
+      if(this.state.answerCheck === "Wrong"){
+        answerClass = "answer-wrong fade-in one"
+        wikiClass = "wiki-box fade-in one"
+      } else {
+        answerClass = "answer-correct fade-in one"
+        wikiClass = "wiki-box fade-in one"
+      }
     }
 
     return(
       <div className="question-show">
+        <Link to={gameUrl}>
+          <div className="button">Back</div>
+        </Link>
         <h3>{this.state.questionObject.question}</h3>
         <form onSubmit={this.handleFormSubmit}>
           <FormTextField
             name="Answer"
+            handlerFunction={this.handleAnswerChange}
+            content={this.state.userAnswer}
           />
           <div className="button-group">
             <input className="form-button submit" type="submit" value="Submit" />
