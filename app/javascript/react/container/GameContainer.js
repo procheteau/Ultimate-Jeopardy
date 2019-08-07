@@ -10,6 +10,7 @@ class GameContainer extends Component {
     this.state = {
       gameCompleted: false,
       gameCategoryObjects: [],
+      gameQuestionStateObjects: [],
       gameScore: 0
     }
   }
@@ -28,8 +29,10 @@ class GameContainer extends Component {
       })
       .then(response => response.json())
       .then(gameObject => {
+        let gameQuestionStateObjects = gameObject.game.game_questions
         let categories = gameObject.game.categories
         let questionObjects = gameObject.game.questions
+        debugger
         categories.forEach((category)=>{
           let categoryQuestions = questionObjects.filter(questionObject => questionObject.category_id === category.id)
           category.questions = categoryQuestions
@@ -68,23 +71,48 @@ class GameContainer extends Component {
 
         let dollarValue200 = "$"+value200
         let questionURL200 = `/games/${gameId}/questions/${question200.id}`
-        rowOne.push(<td className="value fade-in one" key={index}><a href={questionURL200}><p>{dollarValue200}</p></a></td>)
+        let gameQuestion200 = this.gameQuestionStateObjects.filter(object => object.question_id === question200.id)[0];
+        if(gameQuestion200.correct === null){
+          rowOne.push(<td className="value fade-in one" key={index}><a href={questionURL200}><p>{dollarValue200}</p></a></td>)
+        } else{
+          rowOne.push(<td className="value" key={index}></td>)
+        }
 
         let dollarValue400 = "$"+value400
         let questionURL400 = `/games/${gameId}/questions/${question400.id}`
-        rowTwo.push(<td className="value fade-in two" key={index}><a href={questionURL400}><p>{dollarValue400}</p></a></td>)
+        let gameQuestion400 = this.gameQuestionStateObjects.filter(object => object.question_id === question400.id)[0];
+        if(gameQuestion400.correct === null){
+          rowTwo.push(<td className="value fade-in two" key={index}><a href={questionURL400}><p>{dollarValue400}</p></a></td>)
+        } else{
+          rowTwo.push(<td className="value" key={index}></td>)
+        }
 
         let dollarValue600 = "$"+value600
         let questionURL600 = `/games/${gameId}/questions/${question600.id}`
-        rowThree.push(<td className="value fade-in three" key={index}><a href={questionURL600}><p>{dollarValue600}</p></a></td>)
+        let gameQuestion600 = this.gameQuestionStateObjects.filter(object => object.question_id === question600.id)[0];
+        if(gameQuestion600.correct === null){
+          rowThree.push(<td className="value fade-in three" key={index}><a href={questionURL600}><p>{dollarValue600}</p></a></td>)
+        } else{
+          rowThree.push(<td className="value" key={index}></td>)
+        }
 
         let dollarValue800 = "$"+value800
         let questionURL800 = `/games/${gameId}/questions/${question800.id}`
-        rowFour.push(<td className="value fade-in four" key={index}><a href={questionURL800}><p>{dollarValue800}</p></a></td>)
+        let gameQuestion800 = this.gameQuestionStateObjects.filter(object => object.question_id === question800.id)[0];
+        if(gameQuestion800.correct === null){
+          rowFour.push(<td className="value fade-in four" key={index}><a href={questionURL800}><p>{dollarValue800}</p></a></td>)
+        } else{
+          rowFour.push(<td className="value" key={index}></td>)
+        }
 
         let dollarValue1000 = "$"+value1000
         let questionURL1000 = `/games/${gameId}/questions/${question1000.id}`
-        rowFive.push(<td className="value fade-in five" key={index}><a href={questionURL1000}><p>{dollarValue1000}</p></a></td>)
+        let gameQuestion1000 = this.gameQuestionStateObjects.filter(object => object.question_id === question1000.id)[0];
+        if(gameQuestion1000.correct === null){
+          rowFive.push(<td className="value fade-in five" key={index}><a href={questionURL1000}><p>{dollarValue1000}</p></a></td>)
+        } else{
+          rowFive.push(<td className="value" key={index}></td>)
+        }
       })
     }
 
