@@ -9,7 +9,7 @@ class GameQuestionFormContainer extends Component {
     this.state = {
       userAnswer: '',
       answerSubmitted: false,
-      answerCheck: null,
+      answerCheck: '',
       wikiObject: {},
       questionObject: {}
     }
@@ -21,19 +21,46 @@ class GameQuestionFormContainer extends Component {
 
   handleFormSubmit(event){
     event.preventDefault();
+    let scorePayload, checkAnswer
     if(this.state.answerSubmitted === false){
-      if(this.state.userAnswer.toUpperCase() === this.state.questionObject.answer ){
-        let scorePayload = {value: this.state.questionObject.value}
-        this.setState({answerSubmitted: true, answerCheck: "Correct"})
+      if(this.state.userAnswer.toUpperCase() === this.state.questionObject.answer){
+        checkAnswer = "Correct";
+        this.setState({answerSubmitted: true, answerCheck: checkAnswer})
+        scorePayload = {value: this.state.questionObject.value, answerCheck: checkAnswer}
         this.addScore(scorePayload)
       } else {
-          this.setState({answerSubmitted: true, answerCheck: "Wrong"})}
+          checkAnswer = "Wrong";
+          this.setState({answerSubmitted: true, answerCheck: checkAnswer})
+          scorePayload = {value: 0, answerCheck: checkAnswer}
+          this.addScore(scorePayload)
+        }
     }
   }
 
 
   addScore(scorePayload){
-    console.log(`${scorePayload.value} points added!`)
+    let questionUrl = this.props.match.url
+    let gameUrl = questionUrl.split("/").splice(0,3).join("/")
+    let fetchUrl = "/api/v1" + gameUrl
+    fetch(`${fetchUrl}`, {
+      credentials: 'same-origin',
+      method: 'PUT',
+      body: JSON.stringify(scorePayload),
+      headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+       },
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   handleAnswerChange(event){
