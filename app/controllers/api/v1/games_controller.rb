@@ -22,7 +22,6 @@ skip_before_action :verify_authenticity_token
     else
       game_question.update_attributes(correct: false)
     end
-
     #add score value from question to total. If question was incorrect, 0 is added
     revised_score = game[:score]+score_update["value"]
     game.update_attributes(score: revised_score)
