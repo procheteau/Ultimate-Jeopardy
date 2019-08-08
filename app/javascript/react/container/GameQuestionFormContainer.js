@@ -26,12 +26,12 @@ class GameQuestionFormContainer extends Component {
       if(this.state.userAnswer.toUpperCase() === this.state.questionObject.answer){
         checkAnswer = "Correct";
         this.setState({answerSubmitted: true, answerCheck: checkAnswer})
-        scorePayload = {value: this.state.questionObject.value, answerCheck: checkAnswer}
+        scorePayload = {value: this.state.questionObject.value, answerCheck: checkAnswer, question_id: this.props.match.params.id }
         this.addScore(scorePayload)
       } else {
           checkAnswer = "Wrong";
           this.setState({answerSubmitted: true, answerCheck: checkAnswer})
-          scorePayload = {value: 0, answerCheck: checkAnswer}
+          scorePayload = {value: 0, answerCheck: checkAnswer, question_id: this.props.match.params.id}
           this.addScore(scorePayload)
         }
     }
