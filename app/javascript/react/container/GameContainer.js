@@ -79,7 +79,7 @@ class GameContainer extends Component {
         if(gameQuestion200.correct === null){
           rowOne.push(<td className="value fade-in one" key={index}><a href={questionURL200}><p>{dollarValue200}</p></a></td>)
         } else{
-          rowOne.push(<td className="value" key={index}></td>)
+          rowOne.push(<td className="value fade-in one" key={index}></td>)
         }
 
         let dollarValue400 = "$"+value400
@@ -88,7 +88,7 @@ class GameContainer extends Component {
         if(gameQuestion400.correct === null){
           rowTwo.push(<td className="value fade-in two" key={index}><a href={questionURL400}><p>{dollarValue400}</p></a></td>)
         } else{
-          rowTwo.push(<td className="value" key={index}></td>)
+          rowTwo.push(<td className="value fade-in two" key={index}></td>)
         }
 
         let dollarValue600 = "$"+value600
@@ -97,7 +97,7 @@ class GameContainer extends Component {
         if(gameQuestion600.correct === null){
           rowThree.push(<td className="value fade-in three" key={index}><a href={questionURL600}><p>{dollarValue600}</p></a></td>)
         } else{
-          rowThree.push(<td className="value" key={index}></td>)
+          rowThree.push(<td className="value fade-in three" key={index}></td>)
         }
 
         let dollarValue800 = "$"+value800
@@ -106,7 +106,7 @@ class GameContainer extends Component {
         if(gameQuestion800.correct === null){
           rowFour.push(<td className="value fade-in four" key={index}><a href={questionURL800}><p>{dollarValue800}</p></a></td>)
         } else{
-          rowFour.push(<td className="value" key={index}></td>)
+          rowFour.push(<td className="value fade-in four" key={index}></td>)
         }
 
         let dollarValue1000 = "$"+value1000
@@ -115,7 +115,7 @@ class GameContainer extends Component {
         if(gameQuestion1000.correct === null){
           rowFive.push(<td className="value fade-in five" key={index}><a href={questionURL1000}><p>{dollarValue1000}</p></a></td>)
         } else{
-          rowFive.push(<td className="value" key={index}></td>)
+          rowFive.push(<td className="value fade-in five" key={index}></td>)
         }
       })
     }

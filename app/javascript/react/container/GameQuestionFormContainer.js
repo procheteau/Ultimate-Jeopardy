@@ -133,6 +133,5 @@ class GameQuestionFormContainer extends Component {
       </div>
     )
   }
-
 }
 export default GameQuestionFormContainer
