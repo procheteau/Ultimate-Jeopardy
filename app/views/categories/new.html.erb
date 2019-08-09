@@ -1,0 +1,40 @@
+<div class="category_form">
+  <div class = "category_form_box">
+    <h2>Create New Category</h2>
+
+  <%= form_tag "/categories" do %>
+      <label for="name">Category Name</label>
+      <input type="text" id="name" name="name">
+
+      <label for="question_text200">Question #1</label>
+      <input type="text" id="question_text200" name="question_text200">
+      <label for="answer200">Answer #1</label>
+      <input type="text" id="answer200" name="answer200">
+
+      <label for="question_text400">Question #2</label>
+      <input type="text" id="question_text400" name="question_text400">
+      <label for="answer400">Answer #2</label>
+      <input type="text" id="answer400" name="answer400">
+
+      <label for="question_text600">Question #3</label>
+      <input type="text" id="question_text600" name="question_text600">
+      <label for="answer600">Answer #3</label>
+      <input type="text" id="answer600" name="answer600">
+
+      <label for="question_text800">Question #4</label>
+      <input type="text" id="question_text800" name="question_text800">
+      <label for="answer800">Answer #4</label>
+      <input type="text" id="answer800" name="answer800">
+
+      <label for="question_text1000">Question #5</label>
+      <input type="text" id="question_text1000" name="question_text1000">
+      <label for="answer1000">Answer #5</label>
+      <input type="text" id="answer1000" name="answer1000">
+
+      <%= token_tag nil %>
+      <div class="button-group">
+        <input class="form-button submit" type="submit" value="Submit" />
+      </div>
+    <% end %>
+  </div>
+</div>

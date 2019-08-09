@@ -365,3 +365,61 @@ p, .form-button, .form-button .submit {
 .button a {
   color: #000000;
 }
+
+.category_form{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(white,#273469);
+  background: -webkit-linear-gradient(white,#273469);
+  background: -o-linear-gradient(white,#273469);
+  background: -moz-linear-gradient(white,#273469);
+  font-family: 'Volkhov', serif;
+  color: #FAFAFF;
+  position: relative;
+}
+
+.category_form_box{
+ background: #273469;
+ border-radius: 20px;
+ align: center;
+ margin: 50px;
+ box-shadow: 5px 5px 2px #30343F;
+}
+
+.category_form input{
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+  padding-bottom: 20px;
+}
+
+.category_form .button-group{
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+}
+
+.category_form .form-button:hover, .form-button .submit:hover {
+  background-color: #E4D9FF;
+  color: #30343F;
+}
+
+.category_form label{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Volkhov', serif;
+  color: #FAFAFF;
+}
+
+.category_form h2{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Volkhov', serif;
+  color: #FAFAFF;
+  text-shadow: 3px 3px 1px #30343F;
+}

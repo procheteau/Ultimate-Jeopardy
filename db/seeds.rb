@@ -19,7 +19,7 @@ wiki = ParseWiki.new
   #   Question.create!(category: category, question_text: question_object[:question_text], answer: question_object[:answer], value: question_object[:value], wiki_intro: intro, wiki_image: image_url)
 
 
-Array(16000..18410).each_with_index do |num,index|
+Array(17910..18410).each_with_index do |num,index|
   puts "Category #{index}"
   if jeopardy.category(num) != nil
     category_object = jeopardy.category(num)
