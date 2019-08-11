@@ -1,6 +1,6 @@
-#Ultimate Jeopardy
+# Ultimate Jeopardy
 
-###Launch Academy - Breakable Toy
+### Launch Academy - Breakable Toy
 
 <img src="app/assets/images/example-menu.png" width="400" >
 
@@ -12,7 +12,7 @@ Ultimate Jeopardy is a React/Rails app featuring the trivia game Jeopardy. Once 
 
 I love the show Jeopardy! I'm not the best at trivia, so I really wanted to build a tool that would improve my Jeopardy game. I would often pause the show to look up an answer I didn't get on Wikipedia, so I thought it would be nice if that was automated. I also chose to build this app because games are fun and I see potential to expand its functionality. I've set up my tables in a way that users can recall questions they've previously answered incorrectly. I'd also like to learn how to use Action Cable to potentially set up an online multiplayer game.
 
-###TODO List
+### TODO List
 * Add Custom Game functionality with React Search bar so that user can choose which categories to use (including their
   own custom categories
 * Add User Profile page, so that user can view their high scores and replay questions they previously answered incorrectly.
