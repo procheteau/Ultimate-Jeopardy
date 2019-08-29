@@ -53,9 +53,10 @@ img {
 }
 
 .menu-block{
-  /* height: 80%; */
+  padding: 1%;
   height: max-content;
   width: 25%;
+  min-width: 400px;
   background: rgba(250, 250, 255,0.8);
   float: right;
   margin-right: 60px;
@@ -74,11 +75,13 @@ img {
 
 .menu-button{
   background-color: #FAFAFF;
-  min-height: 120px;
-  width: 40%;
-  height: 80%;
+  /* width: 40%;
+  height: 100%; */
+  width: 160px;
+  height: 110px;
   box-shadow: 5px 5px 10px #273469;
   margin: auto;
+  margin-top: 5px;
   border-radius: 20px;
   opacity: 1.0;
   text-align: center;
